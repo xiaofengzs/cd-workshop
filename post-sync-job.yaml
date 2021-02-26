@@ -1,0 +1,29 @@
+{{- $fullName := include "application.fullname" . -}}
+{{- $nameSpace := .Release.Namespace -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: post-sync-job-{{ $fullName }}
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - name: wecom-notification
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=c6d1c3fa-2c42-4745-867c-94e21293dbca"
+          - "-H"
+          - "Content-Type: application/json"
+          - "-d"
+          - '{"msgtype": "text","text": {"content": "SUCCESS: Deploy {{ $fullName }} with image tag: {{ .Values.image.tag }}"}}'
+      restartPolicy: Never
+  backoffLimit: 2

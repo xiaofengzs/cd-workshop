@@ -1,0 +1,9 @@
+application:
+  image:
+    pullPolicy: IfNotPresent
+    repository: natasg/cicd-workshop
+    tag: 'cd'
+
+  environments:
+    - name: USERNAME
+      value: 'Chartmuseum'
