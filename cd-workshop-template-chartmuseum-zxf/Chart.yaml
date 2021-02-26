@@ -5,4 +5,4 @@ appVersion: 1.0.0
 dependencies:
   - name: application
     version: 2.16.0
-    repository: "https://github.com/helm/chartmuseum"
+    repository: "http://localhost:8080/chartmuseum"
