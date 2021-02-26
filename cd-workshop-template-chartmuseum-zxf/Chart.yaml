@@ -4,5 +4,5 @@ version: 1.0.0
 appVersion: 1.0.0
 dependencies:
   - name: application
-    version: 0.1.0
-    repository: "@chartmuseum"
+    version: 2.16.0
+    repository: "https://github.com/helm/chartmuseum"
