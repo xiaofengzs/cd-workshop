@@ -1,0 +1,8 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: tr1stanzhi/workshop-demo
+  tag: 'latest'
+
+environments:
+  - name: USERNAME
+    value: 'Alice'

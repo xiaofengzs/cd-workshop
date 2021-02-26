@@ -1,0 +1,4 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: tr1stanzhi/workshop-demo
+  tag: 'latest'

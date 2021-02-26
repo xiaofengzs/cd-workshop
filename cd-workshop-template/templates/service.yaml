@@ -1,0 +1,14 @@
+{{- $fullName := include "application.fullname" . -}}
+{{- $nameSpace := .Release.Namespace -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $fullName }}
+  namespace: {{ $nameSpace }}
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: {{ $fullName }}-http
+  selector:
+    app: {{ $fullName }}
